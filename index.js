@@ -43,8 +43,8 @@ mongoose.connect(atlasConnectionStr, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useFindAndModify: false
-});
-const connection = mongoose.connection;*/
+});*/
+const connection = mongoose.connection;
 
 connection.once('open', function() {
     console.log('MongoDB connection established successfully');
