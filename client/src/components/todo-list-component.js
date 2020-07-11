@@ -11,7 +11,7 @@ class TodosList extends Component {
     }
     componentDidMount() {
         if(this.props.filter===false){
-            axios.get('http://localhost:4000/todos/')
+            axios.get('http://localhost:5000/todos/')
             .then(response => {
                 this.setState({todos: response.data});
             })
@@ -19,7 +19,7 @@ class TodosList extends Component {
                 console.log(error);
             })
         }else{
-            axios.get('http://localhost:4000/todos/day/'+this.props.selectedDay.day)
+            axios.get('http://localhost:5000/todos/day/'+this.props.selectedDay.day)
             .then(response => {
                 this.setState({todos: response.data});
             })
@@ -30,7 +30,7 @@ class TodosList extends Component {
     }
     componentDidUpdate() {
         if(this.props.filter===false){
-            axios.get('http://localhost:4000/todos/')
+            axios.get('http://localhost:5000/todos/')
             .then(response => {
                 this.setState({todos: response.data});
             })
@@ -38,7 +38,7 @@ class TodosList extends Component {
                 console.log(error);
             })
         }else{
-            axios.get('http://localhost:4000/todos/day/'+this.props.selectedDay.day)
+            axios.get('http://localhost:5000/todos/day/'+this.props.selectedDay.day)
             .then(response => {
                 this.setState({todos: response.data});
             })
@@ -61,11 +61,11 @@ class TodosList extends Component {
                 <td>
                     <button className='btn btn-secondary'
                         onClick={() => {
-                        axios.post('http://localhost:4000/todos/delete/' + todo._id)
+                        axios.post('http://localhost:5000/todos/delete/' + todo._id)
                             .then(res => {
                                 console.log(res);
                                 console.log(res.data);
-                                return axios.get('http://localhost:4000/todos')
+                                return axios.get('http://localhost:5000/todos')
                             })
                             .then(res => {
                                 const newTodos = res.data;

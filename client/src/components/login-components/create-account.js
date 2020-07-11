@@ -45,7 +45,7 @@ export default class CreateAccount extends Component{
             password: this.state.password
         }
 
-        axios.post('http://localhost:4000/todos/add', newUser)
+        axios.post('http://localhost:5000/todos/add', newUser)
             .then(res => console.log(res.data));
 
         this.setState({

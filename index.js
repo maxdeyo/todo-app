@@ -20,8 +20,13 @@ const path = require('path');
 const staticFiles = express.static(path.join(__dirname, '../../client/build'))
 // pass the static files (react app) to the express app. 
 app.use(staticFiles)
+const mlabURL = 'mongodb://admin:password1@ds341837.mlab.com:41837/heroku_bnbrs8p0'
 
-const db = process.env.MONGODB_URL;
+let uristring =
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost/todo-app';
+/*const db = process.env.MONGODB_URL;
 
 const connectDB = async () => {
   try {
@@ -37,13 +42,13 @@ const connectDB = async () => {
 };
 
 /*let localConnectionStr = 'mongodb://127.0.0.1:27017/todos';
-let atlasConnectionStr = 'mongodb+srv://admin:R0ckl1n##@cluster0.tcwm1.mongodb.net/todo-app?retryWrites=true&w=majority';
+let atlasConnectionStr = 'mongodb+srv://admin:R0ckl1n##@cluster0.tcwm1.mongodb.net/todo-app?retryWrites=true&w=majority';*/
 
-mongoose.connect(atlasConnectionStr, { 
+mongoose.connect(uristring, { 
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useFindAndModify: false
-});*/
+});
 const connection = mongoose.connection;
 
 connection.once('open', function() {

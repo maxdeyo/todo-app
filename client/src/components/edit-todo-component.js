@@ -64,13 +64,13 @@ export default class EditTodo extends Component {
             day: this.state.day
         }
 
-        axios.post('http://localhost:4000/todos/update/'+this.props.match.params.id, editedTodo)
+        axios.post('http://localhost:5000/todos/update/'+this.props.match.params.id, editedTodo)
             .then(res => console.log(res.data));
 
         this.props.history.push('/');
     }
     componentDidMount(){
-        axios.get('http://localhost:4000/todos/' + this.props.match.params.id)
+        axios.get('http://localhost:5000/todos/' + this.props.match.params.id)
             .then(response => {
                 this.setState({
                     title: response.data.title,
