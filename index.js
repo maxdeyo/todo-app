@@ -24,6 +24,7 @@ const mlabURL = 'mongodb://admin:password1@ds341837.mlab.com:41837/heroku_bnbrs8
 
 let uristring =
     process.env.MONGOLAB_URI ||
+    mlabURL ||
     process.env.MONGOHQ_URL ||
     'mongodb://localhost/todo-app';
 /*const db = process.env.MONGODB_URL;
@@ -203,6 +204,7 @@ userRoutes.route('/password/:match').get(function(req, res){
 });
 
 app.use(express.static('client/build'));
+
 app.use('/todos', todoRoutes);
 app.use('/users', userRoutes);
 
