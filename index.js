@@ -20,13 +20,11 @@ const path = require('path');
 const staticFiles = express.static(path.join(__dirname, '../../client/build'))
 // pass the static files (react app) to the express app. 
 app.use(staticFiles)
-const mlabURL = 'mongodb://admin:password1@ds341837.mlab.com:41837/heroku_bnbrs8p0'
 
 let uristring =
     process.env.MONGOLAB_URI ||
-    mlabURL ||
     process.env.MONGOHQ_URL ||
-    'mongodb://localhost/todo-app';
+    'mongodb://localhost:27017/todo-app';
 /*const db = process.env.MONGODB_URL;
 
 const connectDB = async () => {
